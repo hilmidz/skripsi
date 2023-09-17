@@ -85,4 +85,28 @@ class Kepalaunit_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->delete('tb_siswa');
     }
+
+    function insertKelas($data)
+    {
+        $result = $this->db->insert('tb_kelas', $data);
+        return $result;
+    }
+
+    function getIdKelas($id_kelas)
+    {
+        return $this->db->get_where('tb_kelas', ['id_kelas' => $id_kelas])
+            ->row_array();
+    }
+
+    function update_kelas($data, $id_kelas)
+    {
+        $this->db->where('id_kelas', $id_kelas);
+        $this->db->update('tb_kelas', $data);
+    }
+
+    public function deletekelas($id_kelas)
+    {
+        $this->db->where('id_kelas', $id_kelas);
+        $this->db->delete('tb_kelas');
+    }
 }
