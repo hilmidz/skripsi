@@ -7,6 +7,9 @@ class Kepalaunit extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Kepalaunit_model');
+        if ($this->session->userdata('role') != "admin") {
+            redirect("auth");
+        }
     }
 
     function index()
@@ -56,7 +59,8 @@ class Kepalaunit extends CI_Controller
     {
         $data = [
             'title' => 'Halaman Home Admin',
-            'siswa' => $this->Kepalaunit_model->allsiswa()->result()
+            'siswa' => $this->Kepalaunit_model->allsiswa()->result(),
+            'guru' => $this->Kepalaunit_model->allguru()->result(),
         ];
         $this->load->view('layout/header');
         $this->load->view('kepalaunit/siswa_add', $data);
@@ -77,6 +81,8 @@ class Kepalaunit extends CI_Controller
                 'agama_siswa' => $this->input->post('agama_siswa'),
                 'alamat_siswa' => $this->input->post('alamat_siswa'),
                 'status_siswa' => $this->input->post('status_siswa'),
+                'role' => 'siswa',
+                'id_petugas' => $this->input->post('id_petugas'),
             ];
             $this->Kepalaunit_model->insertSiswa($data);
             $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
@@ -99,14 +105,15 @@ class Kepalaunit extends CI_Controller
         $data = [
 
             'username_siswa' => $this->input->post('username_siswa'),
-                'nim_siswa' => $this->input->post('nim_siswa'),
-                'nama_siswa' => $this->input->post('nama_siswa'),
-                'tempatlahir_siswa' => $this->input->post('tempatlahir_siswa'),
-                'tgllahir_siswa' => $this->input->post('tgllahir_siswa'),
-                'jk_siswa' => $this->input->post('jk_siswa'),
-                'agama_siswa' => $this->input->post('agama_siswa'),
-                'alamat_siswa' => $this->input->post('alamat_siswa'),
-                'status_siswa' => $this->input->post('status_siswa'),
+            'nim_siswa' => $this->input->post('nim_siswa'),
+            'nama_siswa' => $this->input->post('nama_siswa'),
+            'tempatlahir_siswa' => $this->input->post('tempatlahir_siswa'),
+            'tgllahir_siswa' => $this->input->post('tgllahir_siswa'),
+            'jk_siswa' => $this->input->post('jk_siswa'),
+            'agama_siswa' => $this->input->post('agama_siswa'),
+            'alamat_siswa' => $this->input->post('alamat_siswa'),
+            'status_siswa' => $this->input->post('status_siswa'),
+            'role' => 'siswa'
 
         ];
 
@@ -124,13 +131,12 @@ class Kepalaunit extends CI_Controller
     public function deletesiswa($id)
     {
         $this->Kepalaunit_model->deletesiswa($id);
-        if($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('msg','Employee successfuly deleted !');
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
         } else {
-            $this->session->set_flashdata('msg','Employee delete failed !');
+            $this->session->set_flashdata('msg', 'Employee delete failed !');
         }
         redirect('kepalaunit/list_siswa');
-
     }
 
     function do_add_guru()
@@ -147,7 +153,8 @@ class Kepalaunit extends CI_Controller
                 'agama_petugas' => $this->input->post('agama_petugas'),
                 'alamat_petugas' => $this->input->post('alamat_petugas'),
                 'telp_petugas' => $this->input->post('telp_petugas'),
-                'status_petugas' => $this->input->post('status_petugas')
+                'status_petugas' => $this->input->post('status_petugas'),
+                'role' => 'petugas'
             ];
             $this->Kepalaunit_model->insertGuru($data);
             $this->session->set_flashdata('success', 'Guru Berhasil ditambahkan');
@@ -168,16 +175,17 @@ class Kepalaunit extends CI_Controller
     {
         $data = [
 
-                'nip' => $this->input->post('nip'),
-                'nama_petugas' => $this->input->post('nama_petugas'),
-                'email_petugas' => $this->input->post('email_petugas'),
-                'tempatlahir_petugas' => $this->input->post('tempatlahir_petugas'),
-                'tgllahir_petugas' => $this->input->post('tgllahir_petugas'),
-                'jk_petugas' => $this->input->post('jk_petugas'),
-                'agama_petugas' => $this->input->post('agama_petugas'),
-                'alamat_petugas' => $this->input->post('alamat_petugas'),
-                'telp_petugas' => $this->input->post('telp_petugas'),
-                'status_petugas' => $this->input->post('status_petugas'),
+            'nip' => $this->input->post('nip'),
+            'nama_petugas' => $this->input->post('nama_petugas'),
+            'email_petugas' => $this->input->post('email_petugas'),
+            'tempatlahir_petugas' => $this->input->post('tempatlahir_petugas'),
+            'tgllahir_petugas' => $this->input->post('tgllahir_petugas'),
+            'jk_petugas' => $this->input->post('jk_petugas'),
+            'agama_petugas' => $this->input->post('agama_petugas'),
+            'alamat_petugas' => $this->input->post('alamat_petugas'),
+            'telp_petugas' => $this->input->post('telp_petugas'),
+            'status_petugas' => $this->input->post('status_petugas'),
+            'role' => 'petugas'
         ];
 
         $id = $this->input->post('id');
@@ -194,12 +202,11 @@ class Kepalaunit extends CI_Controller
     public function deleteguru($id)
     {
         $this->Kepalaunit_model->deleteguru($id);
-        if($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('msg','Employee successfuly deleted !');
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
         } else {
-            $this->session->set_flashdata('msg','Employee delete failed !');
+            $this->session->set_flashdata('msg', 'Employee delete failed !');
         }
         redirect('kepalaunit/list_guru');
-
     }
 }
