@@ -56,7 +56,7 @@ class Auth extends CI_Controller
                     'agama_petugas' => $user->agama_petugas,
                     'alamat_petugas' => $user->alamat_petugas,
                     'telp_petugas' => $user->telp_petugas,
-                    '	status_petugas' => $user->status_petugas,
+                    'status_petugas' => $user->status_petugas,
                     'role' => $user->role,
                 );
                 $this->session->set_userdata($session);

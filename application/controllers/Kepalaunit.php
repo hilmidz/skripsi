@@ -304,4 +304,33 @@ class Kepalaunit extends CI_Controller
         }
         redirect('kepalaunit/list_kelas');
     }
+
+    function add_jadwal()
+    {
+        $data = [
+            'title' => 'Halaman Add Jadwal',
+            'petugas' => $this->Kepalaunit_model->allguru()->result(),
+            'kelas' => $this->Kepalaunit_model->allKelas()->result(),
+        ];
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/jadwal_add', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function do_add_jadwal()
+    {
+        if ($this->input->post('save')) {
+            $data = [
+                'hari_jadwal' => $this->input->post('hari_jadwal'),
+                'tema_pelajaran' => $this->input->post('tema_pelajaran'),
+                'jam_mulai' => $this->input->post('jam_mulai'),
+                'jam_selesai' => $this->input->post('jam_selesai'),
+                'id_petugas' => $this->input->post('id_petugas'),
+                'id_kelas' => $this->input->post('id_kelas'),
+            ];
+            $this->Kepalaunit_model->insertJadwal($data);
+            $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+            redirect('kepalaunit/list_jadwal');
+        }
+    }
 }

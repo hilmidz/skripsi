@@ -41,7 +41,7 @@
                                             <td><?= $jadwal->jam_mulai ?></td>
                                             <td><?= $jadwal->jam_selesai ?></td>
                                             <td><?= $jadwal->nama_petugas ?></td>
-                                            <td><?= $jadwal->nama_kelas ?></td>
+                                            <td><?= $jadwal->nama_kelas ?> <?= $jadwal->nama_kategori ?></td>
 
                                             <td><a href="<?= site_url('kepalaunit/edit_guru/' . $jadwal->id_jadwal) ?>">Edit
                                                     <a href="<?= site_url('kepalaunit/deleteguru/' . $jadwal->id_jadwal) ?>" onclick="return confirm('Are you sure?')">Delete</td>
@@ -57,5 +57,5 @@
             </div>
 
         </section>
-        <a href="<?= site_url('kepalaunit/add_guru') ?>">Tambah Data Pegawai</a>
+        <a href="<?= site_url('kepalaunit/add_jadwal') ?>">Tambah Jadwal</a>
         </table>
