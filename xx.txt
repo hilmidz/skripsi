@@ -1,0 +1,79 @@
+public function edit()
+    {
+        if($this->input->post('submit')) {
+            $data = array(
+                'nama_petugas' => $this->input->post('nama_petugas'),
+                'email_petugas' => $this->input->post('email_petugas'),
+                'tempatlahir_petugas' => $this->input->post('tempatlahir_petugas'),
+                'tgllahir_petugas' => $this->input->post('tgllahir_petugas'),
+                'jk_petugas' => $this->input->post('jk_petugas'),
+                'agama_petugas' => $this->input->post('agama_petugas'),
+                'telp_petugas' => $this->input->post('telp_petugas'),
+                'alamat_petugas' => $this->input->post('alamat_petugas'),
+                'username_petugas' => $this->input->post('username_petugas'),
+            );
+            $id=$this->input->post('id');
+            $query = $this->Auth_model->update($data,$id);
+            if($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('msg','<p style="color:orange">Employee successfuly updated !</p>');
+            } else {
+                $this->session->set_flashdata('msg','<p style="color:red">Employee update failed !</p>');
+            }
+            redirect('petugas/userprofile');
+         }
+        
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('auth');
+    }
+}
+
+
+
+
+
+
+
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Welcome extends CI_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$data['greeting'] = $this->getGreeting();
+		$this->load->view('welcome_message', $data);
+		$this->load->model('Kepalaunit_model');
+	}
+
+	public function index()
+	{
+		$data['petugas'] = $this->Kepalaunit_model->read();
+
+
+		$this->load->view('home_menu');
+
+	}
+
+	private function getGreeting()
+    {
+        date_default_timezone_set('Asia/Jakarta'); // Sesuaikan zona waktu sesuai kebutuhan Anda
+
+        $currentHour = date('H');
+
+        if ($currentHour >= 5 && $currentHour < 10) {
+            return 'Selamat Pagi';
+        } elseif ($currentHour >= 11 && $currentHour < 15) {
+            return 'Selamat Siang';
+        } elseif ($currentHour >= 16 && $currentHour < 18) {
+            return 'Selamat Sore';
+        } else {
+            return 'Selamat Malam';
+        }
+    }
+}
+
+<h1><?php echo $greeting; ?>, <?=$this->session->userdata('nama_petugas')?> !</h1>
