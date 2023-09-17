@@ -38,6 +38,7 @@ class Kepalaunit_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_siswa');
+        $this->db->join('tb_petugas', 'tb_petugas.id = tb_siswa.id_petugas');
         $query = $this->db->get();
         return $query;
     }
