@@ -34,7 +34,7 @@
 
                                         </tr><?php } ?>
                                 </tbody>
-                                
+
                             </table>
                             <!-- End Table with stripped rows -->
                             <a href="<?= site_url('kepalaunit/add_kelas') ?>">Tambah Data Kelas</a>
@@ -63,8 +63,8 @@
                                             <td><?= $kategori->nama_kategori ?></td>
 
 
-                                            <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $kategori->id) ?>">Edit
-                                                    <a href="<?= site_url('kepalaunit/deletesiswa/' . $kategori->id) ?>" onclick="return confirm('Are you sure?')">Delete</td>
+                                            <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $kategori->id_kategori) ?>">Edit
+                                                    <a href="<?= site_url('kepalaunit/deletesiswa/' . $kategori->id_kategori) ?>" onclick="return confirm('Are you sure?')">Delete</td>
 
                                         </tr><?php } ?>
                                 </tbody>

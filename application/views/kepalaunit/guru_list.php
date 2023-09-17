@@ -1,16 +1,16 @@
 <title>SIAK biMBA</title>
 <main id="main" class="main">
 
-<div class="pagetitle">
-  <h1>Data Petugas</h1>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="<?= site_url('welcome') ?>">Home</a></li>
-      <li class="breadcrumb-item active">Guru</li>
-      
-    </ol>
-  </nav>
-  <section class="section">
+  <div class="pagetitle">
+    <h1>Data Petugas</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<?= site_url('welcome') ?>">Home</a></li>
+        <li class="breadcrumb-item active">Guru</li>
+
+      </ol>
+    </nav>
+    <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
@@ -36,25 +36,25 @@
                 </thead>
 
                 <tbody>
-                <?php $i = 1;
-                foreach ($guru as $users) { ?>
-                <tr>
-                    <td><?= $i++ ?></td>
-                    <td><?= $users->nip ?></td>
-                    <td><?= $users->nama_petugas ?></td>
-                    <td><?= $users->email_petugas ?></td>
-                    <td><?= $users->tempatlahir_petugas ?></td>
-                    <td><?= $users->tgllahir_petugas ?></td>
-                    <td><?= $users->jk_petugas ?></td>
-                    <td><?= $users->agama_petugas ?></td>
-                    <td><?= $users->telp_petugas ?></td>
-                    <td><?= $users->alamat_petugas ?></td>
-                    <td><?= $users->status_petugas ?></td>
-                    <td>
-                    <td><a href="<?= site_url('kepalaunit/edit_guru/' . $users->id) ?>">Edit
-                        <a href="<?= site_url('kepalaunit/deleteguru/' . $users->id) ?>" onclick="return confirm('Are you sure?')">Delete</td>
-                    </td>
-                </tr><?php } ?>
+                  <?php $i = 1;
+                  foreach ($guru as $users) { ?>
+                    <tr>
+                      <td><?= $i++ ?></td>
+                      <td><?= $users->nip ?></td>
+                      <td><?= $users->nama_petugas ?></td>
+                      <td><?= $users->email_petugas ?></td>
+                      <td><?= $users->tempatlahir_petugas ?></td>
+                      <td><?= $users->tgllahir_petugas ?></td>
+                      <td><?= $users->jk_petugas ?></td>
+                      <td><?= $users->agama_petugas ?></td>
+                      <td><?= $users->telp_petugas ?></td>
+                      <td><?= $users->alamat_petugas ?></td>
+                      <td><?= $users->status_petugas ?></td>
+                      <td>
+                      <td><a href="<?= site_url('kepalaunit/edit_guru/' . $users->id_petugas) ?>">Edit
+                          <a href="<?= site_url('kepalaunit/deleteguru/' . $users->id_petugas) ?>" onclick="return confirm('Are you sure?')">Delete</td>
+                      </td>
+                    </tr><?php } ?>
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
@@ -63,7 +63,7 @@
           </div>
         </div>
       </div>
-      
+
     </section>
     <a href="<?= site_url('kepalaunit/add_guru') ?>">Tambah Data Pegawai</a>
     </table>

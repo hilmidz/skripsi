@@ -15,7 +15,7 @@ class Kepalaunit_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_kelas');
-        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id = tb_kelas.id_kategori');
+        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id_kategori = tb_kelas.id_kategori');
         $query = $this->db->get();
 
         return $query;
@@ -38,19 +38,19 @@ class Kepalaunit_model extends CI_Model
 
     function getIdGuru($id)
     {
-        return $this->db->get_where('tb_petugas', ['id' => $id])
+        return $this->db->get_where('tb_petugas', ['id_petugas' => $id])
             ->row_array();
     }
 
     function update_guru($data, $id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id_petugas', $id);
         $this->db->update('tb_petugas', $data);
     }
 
     public function deleteguru($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id_petugas', $id);
         $this->db->delete('tb_petugas');
     }
 
@@ -58,8 +58,8 @@ class Kepalaunit_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_siswa');
-        $this->db->join('tb_kelas', 'tb_kelas.id = tb_siswa.id_kelas');
-        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id = tb_kelas.id_kategori');
+        $this->db->join('tb_kelas', 'tb_kelas.id_kelas = tb_siswa.id_kelas');
+        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id_kategori = tb_kelas.id_kategori');
         $query = $this->db->get();
         return $query;
     }
@@ -72,19 +72,19 @@ class Kepalaunit_model extends CI_Model
 
     function getIdSiswa($id)
     {
-        return $this->db->get_where('tb_siswa', ['id' => $id])
+        return $this->db->get_where('tb_siswa', ['id_siswa' => $id])
             ->row_array();
     }
 
     function update_siswa($data, $id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id_siswa', $id);
         $this->db->update('tb_siswa', $data);
     }
 
     public function deletesiswa($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('id_siswa', $id);
         $this->db->delete('tb_siswa');
     }
 
@@ -110,5 +110,15 @@ class Kepalaunit_model extends CI_Model
     {
         $this->db->where('id_kelas', $id_kelas);
         $this->db->delete('tb_kelas');
+    }
+
+    function allJadwal()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_jadwal');
+        $this->db->join('tb_petugas', 'tb_petugas.id_petugas = tb_jadwal.id_petugas');
+        $this->db->join('tb_kelas', 'tb_kelas.id_kelas = tb_jadwal.id_kelas');
+        $query = $this->db->get();
+        return $query;
     }
 }

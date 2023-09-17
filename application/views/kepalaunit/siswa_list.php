@@ -49,8 +49,8 @@
                       <td><?= $users->status_siswa ?></td>
                       <td><?= $users->nama_kelas ?> <?= $users->nama_kategori ?></td>
 
-                      <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $users->id) ?>">Edit
-                          <a href="<?= site_url('kepalaunit/deletesiswa/' . $users->id) ?>" onclick="return confirm('Are you sure?')">Delete</td>
+                      <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $users->id_siswa) ?>">Edit
+                          <a href="<?= site_url('kepalaunit/deletesiswa/' . $users->id_siswa) ?>" onclick="return confirm('Are you sure?')">Delete</td>
 
                     </tr><?php } ?>
                 </tbody>

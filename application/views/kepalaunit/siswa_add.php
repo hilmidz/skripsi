@@ -108,7 +108,7 @@
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="id_kelas">
                       <?php foreach ($kelas as $kelas) { ?>
-                        <option value="<?= $kelas->id ?>"><?= $kelas->nama_kelas ?></option>
+                        <option value="<?= $kelas->id_kelas ?>"><?= $kelas->nama_kelas ?></option>
                       <?php } ?>
                     </select>
                   </div>

@@ -123,7 +123,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_siswa') ?>">
+        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_jadwal') ?>">
           <i class="bi bi-calendar3"></i>
           <span>Jadwal</span>
         </a>
