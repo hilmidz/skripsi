@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Sep 2023 pada 17.25
+-- Waktu pembuatan: 17 Sep 2023 pada 19.15
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -53,8 +53,51 @@ INSERT INTO `tb_admin` (`id`, `nama_admin`, `username_admin`, `email_admin`, `pa
 CREATE TABLE `tb_jadwal` (
   `id` int(10) NOT NULL,
   `hari_jadwal` varchar(50) NOT NULL,
-  `keterangan` text NOT NULL
+  `tema_pelajaran` varchar(100) NOT NULL,
+  `jam_mulai` time NOT NULL,
+  `jam_selesai` time NOT NULL,
+  `id_petugas` int(11) NOT NULL,
+  `id_kelas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_kategori_kelas`
+--
+
+CREATE TABLE `tb_kategori_kelas` (
+  `id` int(11) NOT NULL,
+  `nama_kategori` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tb_kategori_kelas`
+--
+
+INSERT INTO `tb_kategori_kelas` (`id`, `nama_kategori`) VALUES
+(1, 'Standar'),
+(2, 'Khusus');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_kelas`
+--
+
+CREATE TABLE `tb_kelas` (
+  `id` int(11) NOT NULL,
+  `nama_kelas` varchar(100) NOT NULL,
+  `id_kategori` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tb_kelas`
+--
+
+INSERT INTO `tb_kelas` (`id`, `nama_kelas`, `id_kategori`) VALUES
+(1, 'level 1', 1),
+(2, 'level 2', 2);
 
 -- --------------------------------------------------------
 
@@ -72,7 +115,8 @@ CREATE TABLE `tb_nilai` (
   `psikologi_dua` varchar(50) NOT NULL,
   `psikologi_tiga` varchar(50) NOT NULL,
   `psikologi_empat` varchar(50) NOT NULL,
-  `psikologi_lima` varchar(50) NOT NULL
+  `psikologi_lima` varchar(50) NOT NULL,
+  `id_siswa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -117,13 +161,6 @@ CREATE TABLE `tb_petugas` (
   `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `tb_petugas`
---
-
-INSERT INTO `tb_petugas` (`id`, `nip`, `nama_petugas`, `email_petugas`, `tempatlahir_petugas`, `tgllahir_petugas`, `jk_petugas`, `agama_petugas`, `alamat_petugas`, `telp_petugas`, `status_petugas`, `password`, `role`) VALUES
-(16, '123', 'asd', 'alvikaajiandrianty@gmail.com', 'asd', '2023-08-28', 'Laki-laki', 'Hindu', 'Kp. Cikupa no 101, rt 03 rw 08, Desa Bojong Manggu\r\nPameungpeuk', '08979382175', 'Aktif', '202cb962ac59075b964b07152d234b70', 'petugas');
-
 -- --------------------------------------------------------
 
 --
@@ -143,15 +180,8 @@ CREATE TABLE `tb_siswa` (
   `status_siswa` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` varchar(100) NOT NULL,
-  `id_petugas` int(11) NOT NULL
+  `id_kelas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `tb_siswa`
---
-
-INSERT INTO `tb_siswa` (`id`, `username_siswa`, `nim_siswa`, `nama_siswa`, `tempatlahir_siswa`, `tgllahir_siswa`, `jk_siswa`, `agama_siswa`, `alamat_siswa`, `status_siswa`, `password`, `role`, `id_petugas`) VALUES
-(11, 'alvika', '0091', 'Alvika Sumanto', 'Bandung', '2023-09-17', 'Laki-laki', 'Islam', 'asd', 'Aktif', 'c3b86052d1fc94bd11c279a17f3f25e1', 'siswa', 16);
 
 --
 -- Indexes for dumped tables
@@ -167,6 +197,18 @@ ALTER TABLE `tb_admin`
 -- Indeks untuk tabel `tb_jadwal`
 --
 ALTER TABLE `tb_jadwal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_kategori_kelas`
+--
+ALTER TABLE `tb_kategori_kelas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `tb_kelas`
+--
+ALTER TABLE `tb_kelas`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -210,6 +252,18 @@ ALTER TABLE `tb_jadwal`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_kategori_kelas`
+--
+ALTER TABLE `tb_kategori_kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_kelas`
+--
+ALTER TABLE `tb_kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
@@ -225,13 +279,13 @@ ALTER TABLE `tb_ortu`
 -- AUTO_INCREMENT untuk tabel `tb_petugas`
 --
 ALTER TABLE `tb_petugas`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
