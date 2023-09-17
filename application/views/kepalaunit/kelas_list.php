@@ -29,14 +29,15 @@
                                             <td><?= $i++ ?></td>
                                             <td><?= $kelas->nama_kelas ?></td>
                                             <td><?= $kelas->nama_kategori ?></td>
-                                            <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $kelas->id) ?>">Edit
-                                                    <a href="<?= site_url('kepalaunit/deletesiswa/' . $kelas->id) ?>" onclick="return confirm('Are you sure?')">Delete</td>
+                                            <td><a href="<?= site_url('kepalaunit/edit_kelas/' . $kelas->id_kelas) ?>">Edit
+                                                    <a href="<?= site_url('kepalaunit/deletekelas/' . $kelas->id_kelas) ?>" onclick="return confirm('Are you sure?')">Delete</td>
 
                                         </tr><?php } ?>
                                 </tbody>
+                                
                             </table>
                             <!-- End Table with stripped rows -->
-
+                            <a href="<?= site_url('kepalaunit/add_kelas') ?>">Tambah Data Kelas</a>
                         </div>
                     </div>
                 </div>
@@ -76,5 +77,4 @@
             </div>
 
         </section>
-        <a href="<?= site_url('kepalaunit/add_siswa') ?>">Tambah Data Pegawai</a>
         </table>

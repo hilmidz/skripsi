@@ -222,6 +222,7 @@ class Kepalaunit extends CI_Controller
         $this->load->view('layout/footer');
     }
 
+<<<<<<< HEAD
     function list_jadwal()
     {
         $data = [
@@ -233,4 +234,73 @@ class Kepalaunit extends CI_Controller
         $this->load->view('kepalaunit/jadwal_list', $data);
         $this->load->view('layout/footer');
     }
+=======
+    function add_kelas()
+    {
+        $data = [
+            'title' => 'Halaman Home Admin',
+            'kelas' => $this->Kepalaunit_model->allkelas()->result(),
+            'kategori' => $this->Kepalaunit_model->allKategoriKelas()->result(),
+        ];
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/kelas_add', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function do_add_kelas()
+    {
+        if ($this->input->post('save')) {
+            $data = [
+                'nama_kelas' => $this->input->post('nama_kelas'),
+                'id_kategori' => $this->input->post('id_kategori')
+            ];
+            $this->Kepalaunit_model->insertKelas($data);
+            $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+            redirect('kepalaunit/list_kelas');
+        }
+    }
+
+    function edit_kelas($id_kelas)
+    {
+        $data = [
+
+            'title' => 'Halaman Edit Siswa',
+            'kelas' => $this->Kepalaunit_model->getIdKelas($id_kelas),
+            'kategori' => $this->Kepalaunit_model->allKategoriKelas()->result()
+        ];
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/kelas_edit', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function updateKelas()
+    {
+        $data = [
+
+            'nama_kelas' => $this->input->post('nama_kelas'),
+            'id_kategori' => $this->input->post('id_kategori')
+        ];
+
+        $id_kelas = $this->input->post('id_kelas');
+        $result = $this->Kepalaunit_model->update_kelas($data, $id_kelas);
+        if ($result = TRUE) {
+            $this->session->set_flashdata('success', 'Siswa Berhasil diedit');
+            redirect('kepalaunit/list_kelas');
+        } else {
+            $this->session->set_flashdata('error', 'Siswa Gagal diedit');
+            redirect('kepalaunit/list_kelas');
+        }
+    }
+
+    public function deletekelas($id_kelas)
+    {
+        $this->Kepalaunit_model->deletekelas($id_kelas);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
+        } else {
+            $this->session->set_flashdata('msg', 'Employee delete failed !');
+        }
+        redirect('kepalaunit/list_kelas');
+    }
+>>>>>>> e78ef57b0584cf1d13b9732816da67ea83feee95
 }
