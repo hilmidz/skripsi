@@ -104,11 +104,11 @@
                   </div>
                 </fieldset>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Guru</label>
+                  <label class="col-sm-2 col-form-label">Kelas</label>
                   <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example" name="id_petugas">
-                      <?php foreach ($guru as $guru) { ?>
-                        <option value="<?= $guru->id ?>"><?= $guru->nama_petugas ?></option>
+                    <select class="form-select" aria-label="Default select example" name="id_kelas">
+                      <?php foreach ($kelas as $kelas) { ?>
+                        <option value="<?= $kelas->id ?>"><?= $kelas->nama_kelas ?></option>
                       <?php } ?>
                     </select>
                   </div>

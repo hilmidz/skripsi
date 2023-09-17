@@ -2,7 +2,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Data Petugas</h1>
+    <h1>Data Siswa</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= site_url('welcome') ?>">Home</a></li>
@@ -29,7 +29,7 @@
                     <th scope="col">Agama</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Guru</th>
+                    <th scope="col">Kelas</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -47,7 +47,7 @@
                       <td><?= $users->agama_siswa ?></td>
                       <td><?= $users->alamat_siswa ?></td>
                       <td><?= $users->status_siswa ?></td>
-                      <td><?= $users->nama_petugas ?></td>
+                      <td><?= $users->nama_kelas ?> <?= $users->nama_kategori ?></td>
 
                       <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $users->id) ?>">Edit
                           <a href="<?= site_url('kepalaunit/deletesiswa/' . $users->id) ?>" onclick="return confirm('Are you sure?')">Delete</td>

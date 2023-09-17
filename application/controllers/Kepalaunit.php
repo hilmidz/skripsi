@@ -60,7 +60,7 @@ class Kepalaunit extends CI_Controller
         $data = [
             'title' => 'Halaman Home Admin',
             'siswa' => $this->Kepalaunit_model->allsiswa()->result(),
-            'guru' => $this->Kepalaunit_model->allguru()->result(),
+            'kelas' => $this->Kepalaunit_model->allkelas()->result(),
         ];
         $this->load->view('layout/header');
         $this->load->view('kepalaunit/siswa_add', $data);
@@ -82,7 +82,7 @@ class Kepalaunit extends CI_Controller
                 'alamat_siswa' => $this->input->post('alamat_siswa'),
                 'status_siswa' => $this->input->post('status_siswa'),
                 'role' => 'siswa',
-                'id_petugas' => $this->input->post('id_petugas'),
+                'id_kelas' => $this->input->post('id_kelas'),
             ];
             $this->Kepalaunit_model->insertSiswa($data);
             $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
@@ -219,6 +219,18 @@ class Kepalaunit extends CI_Controller
         ];
         $this->load->view('layout/header');
         $this->load->view('kepalaunit/kelas_list', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function list_jadwal()
+    {
+        $data = [
+            'title' => 'Halaman Jadwal',
+            'jadwal' => $this->Kepalaunit_model->allJadwal()->result()
+        ];
+
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/jadwal_list', $data);
         $this->load->view('layout/footer');
     }
 }
