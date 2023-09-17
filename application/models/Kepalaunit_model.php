@@ -10,6 +10,25 @@ class Kepalaunit_model extends CI_Model
         return $query;
     }
 
+    function allKelas()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_kelas');
+        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id = tb_kelas.id_kategori');
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    function allKategoriKelas()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_kategori_kelas');
+        $query = $this->db->get();
+
+        return $query;
+    }
+
     function insertGuru($data)
     {
         $result = $this->db->insert('tb_petugas', $data);
@@ -38,7 +57,7 @@ class Kepalaunit_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_siswa');
-        $this->db->join('tb_petugas', 'tb_petugas.id = tb_siswa.id_petugas');
+
         $query = $this->db->get();
         return $query;
     }

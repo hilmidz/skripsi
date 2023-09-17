@@ -209,4 +209,16 @@ class Kepalaunit extends CI_Controller
         }
         redirect('kepalaunit/list_guru');
     }
+
+    function list_kelas()
+    {
+        $data = [
+            'title' => 'Halaman Kelas',
+            'kelas' => $this->Kepalaunit_model->allKelas()->result(),
+            'kategori_kelas' => $this->Kepalaunit_model->allKategoriKelas()->result()
+        ];
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/kelas_list', $data);
+        $this->load->view('layout/footer');
+    }
 }
