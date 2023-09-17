@@ -10,6 +10,7 @@ class Kepalaunit_model extends CI_Model
         return $query;
     }
 
+
     function allKelas()
     {
         $this->db->select('*');
@@ -57,7 +58,8 @@ class Kepalaunit_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_siswa');
-
+        $this->db->join('tb_kelas', 'tb_kelas.id = tb_siswa.id_kelas');
+        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id = tb_kelas.id_kategori');
         $query = $this->db->get();
         return $query;
     }
