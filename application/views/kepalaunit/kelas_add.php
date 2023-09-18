@@ -23,7 +23,7 @@
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" name="id_kategori">
                       <?php foreach ($kategori as $kategori) { ?>
-                        <option value="<?= $kategori->id ?>"><?= $kategori->nama_kategori ?></option>
+                        <option value="<?= $kategori->id_kategori ?>"><?= $kategori->nama_kategori ?></option>
                       <?php } ?>
                     </select>
                   </div>
