@@ -93,48 +93,82 @@
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
+      <?php if ($this->session->userdata('role') == 'admin') { ?>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('welcome') ?>">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('Kepalaunit') ?>">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+      <?php } elseif ($this->session->userdata('role') == 'petugas') { ?>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('Petugas') ?>">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+      <?php } elseif ($this->session->userdata('role') == 'siswa') { ?>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('Siswa') ?>">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+      <?php } ?>
 
       <li class="nav-heading">Pages</li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_guru') ?>">
-          <i class="bi bi-person"></i>
-          <span>Petugas</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+      <!-- End Profile Page Nav -->
+      <?php if ($this->session->userdata('role') == 'admin') { ?>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_guru') ?>">
+            <i class="bi bi-person"></i>
+            <span>Petugas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_siswa') ?>">
+            <i class="bi bi-person-circle"></i>
+            <span>Siswa</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_kelas') ?>">
+            <i class="bi bi-door-closed-fill"></i>
+            <span>Kelas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_jadwal') ?>">
+            <i class="bi bi-calendar3"></i>
+            <span>Jadwal</span>
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_siswa') ?>">
-          <i class="bi bi-person-circle"></i>
-          <span>Siswa</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_kelas') ?>">
-          <i class="bi bi-door-closed-fill"></i>
-          <span>Kelas</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_jadwal') ?>">
-          <i class="bi bi-calendar3"></i>
-          <span>Jadwal</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_siswa') ?>">
-          <i class="bi bi-card-checklist"></i>
-          <span>Nilai</span>
-        </a>
-      </li>
-
+      <?php } ?>
+      <?php if ($this->session->userdata('role') == 'petugas') { ?>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('Petugas/list_jadwal_saya') ?>">
+            <i class="bi bi-book-fill"></i>
+            <span>Jadwal Mengajar Saya</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_siswa') ?>">
+            <i class="bi bi-card-checklist"></i>
+            <span>Nilai</span>
+          </a>
+        </li>
+      <?php } ?>
+      <?php if ($this->session->userdata('role') == 'siswa') { ?>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="<?= site_url('Siswa/list_jadwal_saya') ?>">
+            <i class="bi bi-book-fill"></i>
+            <span>Jadwal Belajar Saya</span>
+          </a>
+        </li>
+      <?php } ?>
 
 
     </ul>

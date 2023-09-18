@@ -334,4 +334,21 @@ class Kepalaunit extends CI_Controller
             redirect('kepalaunit/list_jadwal');
         }
     }
+
+    function detail_jadwal($id_jadwal)
+    {
+        $id_kelas = $this->Kepalaunit_model->detailJadwal($id_jadwal)->row_array();
+        $id = $id_kelas['id_kelas'];
+        $data = [
+
+            'title' => 'Halaman Detail Jadwal',
+            'jadwal' => $this->Kepalaunit_model->detailJadwal($id_jadwal)->row_array(),
+            'siswa' => $this->Kepalaunit_model->siswaKelasJadwal($id)->result()
+        ];
+        // var_dump($data['siswa']);
+
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/detail_jadwal', $data);
+        $this->load->view('layout/footer');
+    }
 }

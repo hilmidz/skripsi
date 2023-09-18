@@ -31,7 +31,7 @@ class Auth extends CI_Controller
             // Redirect ke tampilan yang sesuai berdasarkan peran
             if ($user->role == 'siswa') {
                 $session = array(
-                    'id' => $user->id,
+                    'id_siswa' => $user->id_siswa,
                     'username_siswa' => $user->username_siswa,
                     'nim_siswa' => $user->nim_siswa,
                     'nama_siswa' => $user->nama_siswa,
@@ -41,12 +41,13 @@ class Auth extends CI_Controller
                     'alamat_siswa' => $user->alamat_siswa,
                     'status_siswa' => $user->status_siswa,
                     'role' => $user->role,
+                    'id_kelas' => $user->id_kelas
                 );
                 $this->session->set_userdata($session);
                 redirect('Siswa');
             } elseif ($user->role == 'petugas') {
                 $session = array(
-                    'id' => $user->id,
+                    'id_petugas' => $user->id_petugas,
                     'nip' => $user->nip,
                     'nama_petugas' => $user->nama_petugas,
                     'email_petugas' => $user->email_petugas,
@@ -63,7 +64,7 @@ class Auth extends CI_Controller
                 redirect('Petugas');
             } elseif ($user->role == 'admin') {
                 $session = array(
-                    'id' => $user->id,
+                    'id_admin' => $user->id_admin,
                     'nama_admin' => $user->nama_admin,
                     'username_admin	' => $user->username_admin,
                     'email_admin' => $user->email_admin,

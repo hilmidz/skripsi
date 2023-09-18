@@ -21,4 +21,34 @@ class Petugas extends CI_Controller
         $this->load->view('petugas/home');
         $this->load->view('layout/footer');
     }
+
+    function list_jadwal_saya()
+    {
+        $id_petugas = $this->session->userdata('id_petugas');
+        $data = [
+            'title' => 'Halaman Jadwal',
+            'jadwal' => $this->Petugas_model->allJadwalSaya($id_petugas)->result()
+        ];
+        var_dump($id_petugas);
+        $this->load->view('layout/header');
+        $this->load->view('petugas/jadwal_list', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function detail_jadwal($id_jadwal)
+    {
+        $id_kelas = $this->Petugas_model->detailJadwal($id_jadwal)->row_array();
+        $id = $id_kelas['id_kelas'];
+        $data = [
+
+            'title' => 'Halaman Detail Jadwal',
+            'jadwal' => $this->Petugas_model->detailJadwal($id_jadwal)->row_array(),
+            'siswa' => $this->Petugas_model->siswaKelasJadwal($id)->result()
+        ];
+        // var_dump($data['siswa']);
+
+        $this->load->view('layout/header');
+        $this->load->view('petugas/detail_jadwal', $data);
+        $this->load->view('layout/footer');
+    }
 }

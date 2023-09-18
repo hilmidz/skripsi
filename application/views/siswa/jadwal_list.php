@@ -21,7 +21,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Hari, Tanggal</th>
+                                        <th scope="col">Hari</th>
                                         <th scope="col">Tema Pelajaran</th>
                                         <th scope="col">Jam Mulai</th>
                                         <th scope="col">Jam Selesai</th>
@@ -36,16 +36,15 @@
                                     foreach ($jadwal as $jadwal) { ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $jadwal->hari_jadwal ?>, <?= $jadwal->tanggal ?></td>
+                                            <td><?= $jadwal->hari_jadwal ?></td>
                                             <td><?= $jadwal->tema_pelajaran ?></td>
                                             <td><?= $jadwal->jam_mulai ?></td>
                                             <td><?= $jadwal->jam_selesai ?></td>
                                             <td><?= $jadwal->nama_petugas ?></td>
                                             <td><?= $jadwal->nama_kelas ?> <?= $jadwal->nama_kategori ?></td>
 
-                                            <td><a class="btn btn-primary btn-sm" href="<?= site_url('kepalaunit/detail_jadwal/' . $jadwal->id_jadwal) ?>">Detail </a>
-                                                <a class="btn btn-warning btn-sm" href="<?= site_url('kepalaunit/edit_guru/' . $jadwal->id_jadwal) ?>">Edit </a>
-                                                <a class="btn btn-danger btn-sm" href="<?= site_url('kepalaunit/deleteguru/' . $jadwal->id_jadwal) ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                            <td><a class="btn btn-primary btn-sm" href="<?= site_url('siswa/detail_jadwal/' . $jadwal->id_jadwal) ?>">Detail </a>
+
                                             </td>
 
                                         </tr><?php } ?>
