@@ -21,7 +21,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">Hari</th>
+                                        <th scope="col">Hari, Tanggal</th>
                                         <th scope="col">Tema Pelajaran</th>
                                         <th scope="col">Jam Mulai</th>
                                         <th scope="col">Jam Selesai</th>
@@ -36,7 +36,7 @@
                                     foreach ($jadwal as $jadwal) { ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $jadwal->hari_jadwal ?></td>
+                                            <td><?= $jadwal->hari_jadwal ?>, <?= $jadwal->tanggal ?></td>
                                             <td><?= $jadwal->tema_pelajaran ?></td>
                                             <td><?= $jadwal->jam_mulai ?></td>
                                             <td><?= $jadwal->jam_selesai ?></td>

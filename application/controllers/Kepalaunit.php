@@ -325,6 +325,7 @@ class Kepalaunit extends CI_Controller
                 'tema_pelajaran' => $this->input->post('tema_pelajaran'),
                 'jam_mulai' => $this->input->post('jam_mulai'),
                 'jam_selesai' => $this->input->post('jam_selesai'),
+                'tanggal' => $this->input->post('tanggal'),
                 'id_petugas' => $this->input->post('id_petugas'),
                 'id_kelas' => $this->input->post('id_kelas'),
             ];
