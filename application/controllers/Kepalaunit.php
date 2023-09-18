@@ -119,7 +119,7 @@ class Kepalaunit extends CI_Controller
 
         ];
 
-        $id = $this->input->post('id');
+        $id = $this->input->post('id_siswa');
         $result = $this->Kepalaunit_model->update_siswa($data, $id);
         if ($result = TRUE) {
             $this->session->set_flashdata('success', 'Siswa Berhasil diedit');
@@ -333,6 +333,56 @@ class Kepalaunit extends CI_Controller
             $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
             redirect('kepalaunit/list_jadwal');
         }
+    }
+
+    function edit_jadwal($id)
+    {
+        $data = [
+
+            'title' => 'Halaman Edit Siswa',
+            'petugas' => $this->Kepalaunit_model->allguru()->result(),
+            'jadwal' => $this->Kepalaunit_model->getIdJadwal($id),
+            'kelas' => $this->Kepalaunit_model->allKelas()->result(),
+            'kategori' => $this->Kepalaunit_model->allKategoriKelas()->result()
+        ];
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/jadwal_edit', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function updateJadwal()
+    {
+        $data = [
+
+            'hari_jadwal' => $this->input->post('hari_jadwal'),
+            'tema_pelajaran' => $this->input->post('tema_pelajaran'),
+            'jam_mulai' => $this->input->post('jam_mulai'),
+            'jam_selesai' => $this->input->post('jam_selesai'),
+            'tanggal' => $this->input->post('tanggal'),
+            'id_petugas' => $this->input->post('id_petugas'),
+            'id_kelas' => $this->input->post('id_kelas'),
+        ];
+
+        $id = $this->input->post('id_jadwal');
+        $result = $this->Kepalaunit_model->update_jadwal($data, $id);
+        if ($result = TRUE) {
+            $this->session->set_flashdata('success', 'Siswa Berhasil diedit');
+            redirect('kepalaunit/list_jadwal');
+        } else {
+            $this->session->set_flashdata('error', 'Siswa Gagal diedit');
+            redirect('kepalaunit/list_jadwal');
+        }
+    }
+
+    public function deletejadwal($id)
+    {
+        $this->Kepalaunit_model->deletejadwal($id);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
+        } else {
+            $this->session->set_flashdata('msg', 'Employee delete failed !');
+        }
+        redirect('kepalaunit/list_jadwal');
     }
 
     function detail_jadwal($id_jadwal)

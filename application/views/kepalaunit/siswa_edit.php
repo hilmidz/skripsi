@@ -11,12 +11,12 @@
         <div class="card">
         <div class="card-body">
             <h5 class="card-title">General Form Elements</h5>
-        <form action="<?= site_url('kepalaunit/updateGuru') ?>" method="post">
+        <form action="<?= site_url('kepalaunit/update_siswa') ?>" method="post">
             <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="nama_siswa" value="<?= $siswa['nama_siswa'] ?>">
-                    <input type="hidden" name="id" value="<?= $siswa['id'] ?>" class="form-control" id="exampleFirstName" required>
+                    <input type="hidden" name="id_siswa" value="<?= $siswa['id_siswa'] ?>" class="form-control" id="exampleFirstName" required>
                 </div>
             </div>
 
