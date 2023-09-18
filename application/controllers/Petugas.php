@@ -63,4 +63,36 @@ class Petugas extends CI_Controller
         $this->load->view('petugas/profile', $data);
         $this->load->view('layout/footer');
     }
+
+    function do_update_guru()
+    {
+        $id = $this->session->userdata('id_petugas');
+        $data = [
+            'nip' => $this->input->post('nip'),
+            'nama_petugas' => $this->input->post('nama_petugas'),
+            'email_petugas' => $this->input->post('email_petugas'),
+            'tempatlahir_petugas' => $this->input->post('tempatlahir_petugas'),
+            'tgllahir_petugas' => $this->input->post('tgllahir_petugas'),
+            'jk_petugas' => $this->input->post('jk_petugas'),
+            'agama_petugas' => $this->input->post('agama_petugas'),
+            'alamat_petugas' => $this->input->post('alamat_petugas'),
+            'telp_petugas' => $this->input->post('telp_petugas'),
+        ];
+
+        $this->Petugas_model->updatePetugas($data, $id);
+        $this->session->set_flashdata('success', 'petugas Berhasil ditambahkan');
+        redirect('petugas/profile');
+    }
+
+    function change_password_petugas()
+    {
+        $id = $this->session->userdata('id_petugas');
+        $data = [
+            'password' => md5($this->input->post('password')),
+        ];
+
+        $this->Petugas_model->updatePasswordPetugas($data, $id);
+        $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+        redirect('petugas/profile');
+    }
 }

@@ -183,4 +183,18 @@ class Kepalaunit_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    function updateAdmin($data, $id)
+    {
+        $this->db->where('id_admin', $id);
+        $result = $this->db->update('tb_admin', $data);
+        return $result;
+    }
+
+    function updatePasswordAdmin($data, $id)
+    {
+        $this->db->where('id_admin', $id);
+        $result = $this->db->update('tb_admin', $data);
+        return $result;
+    }
 }

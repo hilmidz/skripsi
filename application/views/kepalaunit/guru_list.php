@@ -7,9 +7,9 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= site_url('welcome') ?>">Home</a></li>
         <li class="breadcrumb-item active">Guru</li>
-
       </ol>
     </nav>
+    <?= $this->session->flashdata('success')?>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -50,10 +50,8 @@
                       <td><?= $users->telp_petugas ?></td>
                       <td><?= $users->alamat_petugas ?></td>
                       <td><?= $users->status_petugas ?></td>
-                      <td>
-                      <td><a href="<?= site_url('kepalaunit/edit_guru/' . $users->id_petugas) ?>">Edit
-                          <a href="<?= site_url('kepalaunit/deleteguru/' . $users->id_petugas) ?>" onclick="return confirm('Are you sure?')">Delete</td>
-                      </td>
+                      <td><a href="<?= site_url('kepalaunit/edit_guru/' . $users->id_petugas) ?>" class="btn btn-warning "><i class="bi bi-pencil-square"></i></a>
+                          <a href="<?= site_url('kepalaunit/deleteguru/' . $users->id_petugas) ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a></td>
                     </tr><?php } ?>
                 </tbody>
               </table>

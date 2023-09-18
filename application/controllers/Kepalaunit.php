@@ -85,7 +85,10 @@ class Kepalaunit extends CI_Controller
                 'id_kelas' => $this->input->post('id_kelas'),
             ];
             $this->Kepalaunit_model->insertSiswa($data);
-            $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Ditambah</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_siswa');
         }
     }
@@ -122,10 +125,16 @@ class Kepalaunit extends CI_Controller
         $id = $this->input->post('id_siswa');
         $result = $this->Kepalaunit_model->update_siswa($data, $id);
         if ($result = TRUE) {
-            $this->session->set_flashdata('success', 'Siswa Berhasil diedit');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Siswa Berhasil Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_siswa');
         } else {
-            $this->session->set_flashdata('error', 'Siswa Gagal diedit');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Siswa Gagal Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_siswa');
         }
     }
@@ -134,9 +143,15 @@ class Kepalaunit extends CI_Controller
     {
         $this->Kepalaunit_model->deletesiswa($id);
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Siswa Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         } else {
-            $this->session->set_flashdata('msg', 'Employee delete failed !');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Siswa Gagal Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         }
         redirect('kepalaunit/list_siswa');
     }
@@ -159,7 +174,10 @@ class Kepalaunit extends CI_Controller
                 'role' => 'petugas'
             ];
             $this->Kepalaunit_model->insertGuru($data);
-            $this->session->set_flashdata('success', 'Guru Berhasil ditambahkan');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Ditambah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_guru');
         }
     }
@@ -195,10 +213,16 @@ class Kepalaunit extends CI_Controller
         $id = $this->input->post('id');
         $result = $this->Kepalaunit_model->update_guru($data, $id);
         if ($result = TRUE) {
-            $this->session->set_flashdata('success', 'Guru Berhasil diedit');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_guru');
         } else {
-            $this->session->set_flashdata('error', 'Guru Gagal diedit');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Guru Gagal Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_guru');
         }
     }
@@ -207,9 +231,15 @@ class Kepalaunit extends CI_Controller
     {
         $this->Kepalaunit_model->deleteguru($id);
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         } else {
-            $this->session->set_flashdata('msg', 'Employee delete failed !');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Gagal Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         }
         redirect('kepalaunit/list_guru');
     }
@@ -257,7 +287,10 @@ class Kepalaunit extends CI_Controller
                 'id_kategori' => $this->input->post('id_kategori')
             ];
             $this->Kepalaunit_model->insertKelas($data);
-            $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Ditambah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_kelas');
         }
     }
@@ -286,10 +319,16 @@ class Kepalaunit extends CI_Controller
         $id_kelas = $this->input->post('id_kelas');
         $result = $this->Kepalaunit_model->update_kelas($data, $id_kelas);
         if ($result = TRUE) {
-            $this->session->set_flashdata('success', 'Siswa Berhasil diedit');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_kelas');
         } else {
-            $this->session->set_flashdata('error', 'Siswa Gagal diedit');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Gagal Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_kelas');
         }
     }
@@ -298,9 +337,15 @@ class Kepalaunit extends CI_Controller
     {
         $this->Kepalaunit_model->deletekelas($id_kelas);
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
+            $this->session->set_flashdata('success', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Gagal Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         } else {
-            $this->session->set_flashdata('msg', 'Employee delete failed !');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Gagal Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         }
         redirect('kepalaunit/list_kelas');
     }
@@ -330,7 +375,10 @@ class Kepalaunit extends CI_Controller
                 'id_kelas' => $this->input->post('id_kelas'),
             ];
             $this->Kepalaunit_model->insertJadwal($data);
-            $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Ditambah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_jadwal');
         }
     }
@@ -366,10 +414,16 @@ class Kepalaunit extends CI_Controller
         $id = $this->input->post('id_jadwal');
         $result = $this->Kepalaunit_model->update_jadwal($data, $id);
         if ($result = TRUE) {
-            $this->session->set_flashdata('success', 'Siswa Berhasil diedit');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_jadwal');
         } else {
-            $this->session->set_flashdata('error', 'Siswa Gagal diedit');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Gagal Diubah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
             redirect('kepalaunit/list_jadwal');
         }
     }
@@ -378,9 +432,15 @@ class Kepalaunit extends CI_Controller
     {
         $this->Kepalaunit_model->deletejadwal($id);
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('msg', 'Employee successfuly deleted !');
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         } else {
-            $this->session->set_flashdata('msg', 'Employee delete failed !');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Data Gagal Dihapus !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
         }
         redirect('kepalaunit/list_jadwal');
     }
@@ -412,5 +472,37 @@ class Kepalaunit extends CI_Controller
         $this->load->view('layout/header');
         $this->load->view('kepalaunit/profile', $data);
         $this->load->view('layout/footer');
+    }
+
+    function do_update_admin()
+    {
+        $id = $this->session->userdata('id_admin');
+        $data = [
+            'nama_admin' => $this->input->post('nama_admin'),
+            'username_admin' => $this->input->post('username_admin'),
+            'email_admin' => $this->input->post('email_admin'),
+        ];
+
+        $this->Kepalaunit_model->updateAdmin($data, $id);
+        $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Data Berhasil Diubah !</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>');
+        redirect('kepalaunit/profile');
+    }
+
+    function change_password_admin()
+    {
+        $id = $this->session->userdata('id_admin');
+        $data = [
+            'password' => md5($this->input->post('password')),
+        ];
+
+        $this->Kepalaunit_model->updatePasswordAdmin($data, $id);
+        $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Password Berhasil Diubah !</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>');
+        redirect('kepalaunit/profile');
     }
 }

@@ -43,4 +43,18 @@ class Petugas_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    function updatePetugas($data, $id)
+    {
+        $this->db->where('id_petugas', $id);
+        $result = $this->db->update('tb_petugas', $data);
+        return $result;
+    }
+
+    function updatePasswordPetugas($data, $id)
+    {
+        $this->db->where('id_petugas', $id);
+        $result = $this->db->update('tb_petugas', $data);
+        return $result;
+    }
 }

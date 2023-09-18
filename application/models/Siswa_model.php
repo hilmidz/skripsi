@@ -49,6 +49,20 @@ class Siswa_model extends CI_Model
         return $result;
     }
 
+    function updateOrtuSiswa($data, $id)
+    {
+        $this->db->where('id', $id);
+        $result = $this->db->update('tb_ortu', $data);
+        return $result;
+    }
+
+    function updateSiswa($data, $id_siswa)
+    {
+        $this->db->where('id_siswa', $id_siswa);
+        $result = $this->db->update('tb_siswa', $data);
+        return $result;
+    }
+
     function cekOrtu($id_siswa)
     {
         $this->db->select('*');
@@ -57,5 +71,12 @@ class Siswa_model extends CI_Model
         $this->db->where('tb_ortu.id_siswa', $id_siswa);
         $query = $this->db->get();
         return $query;
+    }
+
+    function updatePasswordSiswa($data, $id)
+    {
+        $this->db->where('id_siswa', $id);
+        $result = $this->db->update('tb_siswa', $data);
+        return $result;
     }
 }

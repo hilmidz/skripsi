@@ -85,4 +85,59 @@ class Siswa extends CI_Controller
         $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
         redirect('siswa/profile');
     }
+
+    function do_update_ortu()
+    {
+        $id_siswa = $this->session->userdata('id_siswa');
+        $id=$this->input->post('id');
+        $data = [
+            'nama_ayah' => $this->input->post('nama_ayah'),
+            'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+            'agama_ayah' => $this->input->post('agama_ayah'),
+            'alamat_ayah' => $this->input->post('alamat_ayah'),
+            'telp_ayah' => $this->input->post('telp_ayah'),
+            'nama_ibu' => $this->input->post('nama_ibu'),
+            'pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+            'agama_ibu' => $this->input->post('agama_ibu'),
+            'alamat_ibu' => $this->input->post('alamat_ibu'),
+            'telp_ibu' => $this->input->post('telp_ibu'),
+            'id_siswa' => $id_siswa,
+        ];
+
+        $this->Siswa_model->updateOrtuSiswa($data, $id);
+        $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+        redirect('siswa/profile');
+    }
+
+    function do_update_siswa()
+    {
+        $id_siswa = $this->session->userdata('id_siswa');
+        $data = [
+            'nama_siswa' => $this->input->post('nama_siswa'),
+            'tempatlahir_siswa' => $this->input->post('tempatlahir_siswa'),
+            'tgllahir_siswa' => $this->input->post('tgllahir_siswa'),
+            'jk_siswa' => $this->input->post('jk_siswa'),
+            'agama_siswa' => $this->input->post('agama_siswa'),
+            'alamat_siswa' => $this->input->post('alamat_siswa'),
+        ];
+
+        $this->Siswa_model->updateSiswa($data, $id_siswa);
+        $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+        redirect('siswa/profile');
+    }
+
+    function change_password_siswa()
+    {
+        $id = $this->session->userdata('id_siswa');
+        $data = [
+            'password' => md5($this->input->post('password')),
+        ];
+
+        $this->Siswa_model->updatePasswordSiswa($data, $id);
+        $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Password Berhasil Diubah</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>');
+        redirect('siswa/profile');
+    }
 }

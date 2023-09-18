@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Profile</h5>
-                            <form action="<?= site_url('kepalaunit/do_add_siswa') ?>" method="post">
+                            <form action="<?= site_url('siswa/do_update_siswa') ?>" method="post">
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Nama Lengkap</label>
                                     <div class="col-sm-10">
@@ -99,15 +99,14 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Ganti Password</h5>
-                            <form action="<?= site_url('kepalaunit/do_add_siswa') ?>" method="post">
+                            <form action="<?= site_url('siswa/change_password_siswa') ?>" method="post">
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">New Password</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" name="password">
                                     </div>
+                                    
                                 </div>
-
-
                                 <div class="row mb-3">
                                     <div class="col-sm-10">
                                         <input type="submit" value="Simpan" name="save" class="btn btn-danger btn-user">
@@ -117,6 +116,8 @@
                             </form>
                         </div>
                     </div>
+                    <?= $this->session->flashdata('success')?>
+                    <?= $this->session->flashdata('error')?>
                 </div>
             </div>
             <?php if (empty($cekortu)) { ?>
@@ -219,11 +220,12 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Data Orang Tua</h5>
-                                <form action="<?= site_url('siswa/do_add_ortu') ?>" method="post">
+                                <form action="<?= site_url('siswa/do_update_ortu') ?>" method="post">
                                     <div class="row mb-3">
                                         <label for="inputText" class="col-sm-2 col-form-label">Nama Ayah</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="nama_ayah" value="<?= $cekortu['nama_ayah'] ?>">
+                                            <input type="hidden" class="form-control" name="id" value="<?= $cekortu['id'] ?>">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
