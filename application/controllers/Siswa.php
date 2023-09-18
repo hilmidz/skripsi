@@ -7,6 +7,7 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Siswa_model');
+        $this->load->model('Kepalaunit_model');
         if ($this->session->userdata('role') != "siswa") {
             redirect("auth");
         }
@@ -49,5 +50,39 @@ class Siswa extends CI_Controller
         $this->load->view('layout/header');
         $this->load->view('siswa/detail_jadwal', $data);
         $this->load->view('layout/footer');
+    }
+
+    function profile()
+    {
+        $id_siswa = $this->session->userdata('id_siswa');
+        $data = [
+            'siswa' => $this->Siswa_model->getIdSiswa($id_siswa)->row_array(),
+            'cekortu' => $this->Siswa_model->cekOrtu($id_siswa)->row_array()
+        ];
+        // var_dump($data['cekortu']);
+        $this->load->view('layout/header');
+        $this->load->view('siswa/profile', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function do_add_ortu()
+    {
+        $id_siswa = $this->session->userdata('id_siswa');
+        $data = [
+            'nama_ayah' => $this->input->post('nama_ayah'),
+            'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+            'agama_ayah' => $this->input->post('agama_ayah'),
+            'alamat_ayah' => $this->input->post('alamat_ayah'),
+            'telp_ayah' => $this->input->post('telp_ayah'),
+            'nama_ibu' => $this->input->post('nama_ibu'),
+            'pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+            'agama_ibu' => $this->input->post('agama_ibu'),
+            'alamat_ibu' => $this->input->post('alamat_ibu'),
+            'telp_ibu' => $this->input->post('telp_ibu'),
+            'id_siswa' => $id_siswa,
+        ];
+        $this->Siswa_model->insertOrtuSiswa($data);
+        $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
+        redirect('siswa/profile');
     }
 }

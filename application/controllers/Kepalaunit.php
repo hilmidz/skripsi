@@ -350,4 +350,16 @@ class Kepalaunit extends CI_Controller
         $this->load->view('kepalaunit/detail_jadwal', $data);
         $this->load->view('layout/footer');
     }
+
+    function profile()
+    {
+        $id_admin = $this->session->userdata('id_admin');
+        $data = [
+            'admin' => $this->Kepalaunit_model->getIdAdmin($id_admin)->row_array(),
+        ];
+        // var_dump($data['cekortu']);
+        $this->load->view('layout/header');
+        $this->load->view('kepalaunit/profile', $data);
+        $this->load->view('layout/footer');
+    }
 }

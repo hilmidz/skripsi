@@ -34,4 +34,13 @@ class Petugas_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    function getIdPetugas($id_petugas)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_petugas');
+        $this->db->where('id_petugas', $id_petugas);
+        $query = $this->db->get();
+        return $query;
+    }
 }

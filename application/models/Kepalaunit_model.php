@@ -150,4 +150,13 @@ class Kepalaunit_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    function getIdAdmin($id_admin)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_admin');
+        $this->db->where('id_admin', $id_admin);
+        $query = $this->db->get();
+        return $query;
+    }
 }

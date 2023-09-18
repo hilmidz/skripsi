@@ -51,4 +51,16 @@ class Petugas extends CI_Controller
         $this->load->view('petugas/detail_jadwal', $data);
         $this->load->view('layout/footer');
     }
+
+    function profile()
+    {
+        $id_petugas = $this->session->userdata('id_petugas');
+        $data = [
+            'petugas' => $this->Petugas_model->getIdPetugas($id_petugas)->row_array(),
+        ];
+        // var_dump($data['cekortu']);
+        $this->load->view('layout/header');
+        $this->load->view('petugas/profile', $data);
+        $this->load->view('layout/footer');
+    }
 }

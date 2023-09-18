@@ -33,4 +33,29 @@ class Siswa_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    function getIdSiswa($id_siswa)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_siswa');
+        $this->db->where('id_siswa', $id_siswa);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    function insertOrtuSiswa($data)
+    {
+        $result = $this->db->insert('tb_ortu', $data);
+        return $result;
+    }
+
+    function cekOrtu($id_siswa)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_ortu');
+        $this->db->join('tb_siswa', 'tb_siswa.id_siswa = tb_ortu.id_siswa');
+        $this->db->where('tb_ortu.id_siswa', $id_siswa);
+        $query = $this->db->get();
+        return $query;
+    }
 }

@@ -53,7 +53,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            Menus
             <span class="d-none d-md-block dropdown-toggle ps-2"></span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -64,13 +64,30 @@
             <li>
               <hr class="dropdown-divider">
             </li>
+            <?php if ($this->session->userdata('role') == 'siswa') { ?>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="<?= site_url('petugas/userprofile') ?>">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="<?= site_url('siswa/profile') ?>">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+            <?php } elseif ($this->session->userdata('role') == 'petugas') { ?>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="<?= site_url('petugas/profile') ?>">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+            <?php } elseif ($this->session->userdata('role') == 'admin') { ?>
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="<?= site_url('Kepalaunit/profile') ?>">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+            <?php } ?>
+
             <li>
               <hr class="dropdown-divider">
             </li>
