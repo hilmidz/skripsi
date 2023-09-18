@@ -43,8 +43,10 @@
                                             <td><?= $jadwal->nama_petugas ?></td>
                                             <td><?= $jadwal->nama_kelas ?> <?= $jadwal->nama_kategori ?></td>
 
-                                            <td><a href="<?= site_url('kepalaunit/edit_guru/' . $jadwal->id_jadwal) ?>">Edit
-                                                    <a href="<?= site_url('kepalaunit/deleteguru/' . $jadwal->id_jadwal) ?>" onclick="return confirm('Are you sure?')">Delete</td>
+                                            <td><a class="btn btn-primary btn-sm" href="<?= site_url('kepalaunit/detail_jadwal/' . $jadwal->id_jadwal) ?>">Detail </a>
+                                                <a class="btn btn-warning btn-sm" href="<?= site_url('kepalaunit/edit_guru/' . $jadwal->id_jadwal) ?>">Edit </a>
+                                                <a class="btn btn-danger btn-sm" href="<?= site_url('kepalaunit/deleteguru/' . $jadwal->id_jadwal) ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                            </td>
 
                                         </tr><?php } ?>
                                 </tbody>
