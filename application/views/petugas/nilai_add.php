@@ -9,9 +9,21 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">General Form Elements</h5>
+              <h5 class="card-title">Input Nilai</h5>
               <form action="<?= site_url('kepalaunit/do_add_nilai') ?>" method="post">
 
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Nama Siswa</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="level_satu" value="<?= $siswa['nama_siswa'] ?>" disabled>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Tema Pelajaran</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="level_satu" value="<?= $jadwal['tema_pelajaran'] ?>" disabled>
+                  </div>
+                </div>
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Level 1</label>
                   <div class="col-sm-10">

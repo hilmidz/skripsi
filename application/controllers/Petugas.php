@@ -115,4 +115,21 @@ class Petugas extends CI_Controller
         $this->load->view('petugas/nilai_list', $data);
         $this->load->view('layout/footer');
     }
+
+    function do_add_nilai($id_siswa)
+    {
+        $datasiswa = $this->db->get_where('tb_siswa', ['id_siswa' => $id_siswa])
+            ->row_array();
+        $datajadwal = $this->db->get_where('tb_jadwal', ['id_kelas' => $datasiswa['id_kelas']])
+            ->row_array();
+
+        $data = [
+            'title' => 'Tambah Nilai',
+            'siswa' => $datasiswa,
+            'jadwal' => $datajadwal
+        ];
+        $this->load->view('layout/header');
+        $this->load->view('petugas/nilai_add', $data);
+        $this->load->view('layout/footer');
+    }
 }
