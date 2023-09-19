@@ -29,7 +29,6 @@ class Petugas extends CI_Controller
             'title' => 'Halaman Jadwal',
             'jadwal' => $this->Petugas_model->allJadwalSaya($id_petugas)->result()
         ];
-        var_dump($id_petugas);
         $this->load->view('layout/header');
         $this->load->view('petugas/jadwal_list', $data);
         $this->load->view('layout/footer');
@@ -94,5 +93,26 @@ class Petugas extends CI_Controller
         $this->Petugas_model->updatePasswordPetugas($data, $id);
         $this->session->set_flashdata('success', 'Siswa Berhasil ditambahkan');
         redirect('petugas/profile');
+    }
+
+    function nilai_list()
+    {
+        $id_petugas = $this->session->userdata('id_petugas');
+        $jadwals = $this->Petugas_model->allJadwalSaya($id_petugas)->result();
+        $id_kelas = 0;
+        foreach ($jadwals as $jadwal) {
+            $id_kelas = $jadwal->id_kelas;
+            var_dump($id_kelas);
+        }
+        $data = [
+            'title' => 'Halaman Jadwal',
+            'jadwal' => $this->Petugas_model->allJadwalWithSiswaSaya($id_petugas)->result(),
+            // 'siswa' => $this->Petugas_model->siswaKelasJadwal($id_kelas)->result()
+        ];
+
+        // var_dump($data['jadwal']);
+        $this->load->view('layout/header');
+        $this->load->view('petugas/nilai_list', $data);
+        $this->load->view('layout/footer');
     }
 }

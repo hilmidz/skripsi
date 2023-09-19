@@ -11,22 +11,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Edit Jadwal</h5>
                             <form action="<?= site_url('kepalaunit/updateJadwal') ?>" method="post">
-
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Hari</label>
-                                    <div class="col-sm-10">
-                                    <input type="hidden" name="id_jadwal" value="<?= $jadwal['id_jadwal'] ?>" class="form-control" id="exampleFirstName" required>
-                                        <select class="form-control" name="hari_jadwal" value="<?= $jadwal['hari_jadwal'] ?>">
-                                            <option value="Senin" <?= $jadwal['hari_jadwal'] === 'Senin' ? 'selected' : '' ?>>Senin</option>
-                                            <option value="Selasa" <?= $jadwal['hari_jadwal'] === 'Selasa' ? 'selected' : '' ?>>Selasa</option>
-                                            <option value="Rabu" <?= $jadwal['hari_jadwal'] === 'Rabu' ? 'selected' : '' ?>>Rabu</option>
-                                            <option value="Kamis" <?= $jadwal['hari_jadwal'] === 'Kamis' ? 'selected' : '' ?>>Kamis</option>
-                                            <option value="Jumat" <?= $jadwal['hari_jadwal'] === 'Jumat' ? 'selected' : '' ?>>Jum'at</option>
-                                            <option value="Sabtu" <?= $jadwal['hari_jadwal'] === 'Sabtu' ? 'selected' : '' ?>>Sabtu</option>
-                                        </select>
-                                    </div>
-                                </div>
-
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
                                     <div class="col-sm-10">
@@ -57,7 +41,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" name="id_petugas">
                                             <?php foreach ($petugas as $petugas) { ?>
-                                                <option value="<?= $petugas->id_petugas ?>" <?= $petugas->id_petugas == $jadwal['id_petugas']? 'selected':'' ?>><?= $petugas->nama_petugas ?></option>
+                                                <option value="<?= $petugas->id_petugas ?>" <?= $petugas->id_petugas == $jadwal['id_petugas'] ? 'selected' : '' ?>><?= $petugas->nama_petugas ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -67,7 +51,7 @@
                                     <div class="col-sm-10">
                                         <select class="form-control" name="id_kelas">
                                             <?php foreach ($kelas as $kelas) { ?>
-                                                <option value="<?= $kelas->id_kelas ?>" <?= $kelas->id_kelas == $jadwal['id_kelas']? 'selected':'' ?>><?= $kelas->nama_kelas ?> <?= $kelas->nama_kategori ?></option>
+                                                <option value="<?= $kelas->id_kelas ?>" <?= $kelas->id_kelas == $jadwal['id_kelas'] ? 'selected' : '' ?>><?= $kelas->nama_kelas ?> <?= $kelas->nama_kategori ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

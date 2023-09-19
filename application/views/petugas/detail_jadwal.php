@@ -13,7 +13,18 @@
                         <div class="card-body p-3">
                             <p class="fw-bold fs-5">Nama Pengajar: <?= $jadwal['nama_petugas'] ?> | <?= $jadwal['nip'] ?></p>
                             <p class="fw-medium">Tema Pelajaran: <?= $jadwal['tema_pelajaran'] ?></p>
-                            <p class="fw-medium" style="margin-top: -12px">Jadwal: <?= $jadwal['hari_jadwal'] ?> | <?= $jadwal['jam_mulai'] ?> - <?= $jadwal['jam_selesai'] ?></p>
+                            <?php
+                            $tanggal_awal = $jadwal['tanggal'];
+                            $nama_hari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+
+                            $tanggal_array = explode("-", $tanggal_awal);
+                            $hari = date("w", strtotime($tanggal_awal));
+                            $bulan = date("F", strtotime($tanggal_awal));
+                            $tahun = $tanggal_array[0];
+                            ?>
+
+
+                            <p class="fw-medium" style="margin-top: -12px">Jadwal: <?= $nama_hari[$hari] ?>, <?= $tanggal_array[2] ?> <?= $bulan ?> <?= $tahun ?> | <?= $jadwal['jam_mulai'] ?> - <?= $jadwal['jam_selesai'] ?></p>
                             <p class="fw-medium" style="margin-top: -12px">Kelas: <?= $jadwal['nama_kelas'] ?> <?= $jadwal['nama_kategori'] ?></p>
 
                         </div>

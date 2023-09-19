@@ -172,7 +172,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="<?= site_url('kepalaunit/list_siswa') ?>">
+          <a class="nav-link collapsed" href="<?= site_url('Petugas/nilai_list') ?>">
             <i class="bi bi-card-checklist"></i>
             <span>Nilai</span>
           </a>

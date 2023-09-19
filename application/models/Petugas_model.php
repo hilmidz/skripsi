@@ -57,4 +57,17 @@ class Petugas_model extends CI_Model
         $result = $this->db->update('tb_petugas', $data);
         return $result;
     }
+
+    function allJadwalWithSiswaSaya($id_petugas)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_jadwal');
+        $this->db->join('tb_petugas', 'tb_petugas.id_petugas = tb_jadwal.id_petugas');
+        $this->db->join('tb_kelas', 'tb_kelas.id_kelas = tb_jadwal.id_kelas');
+        $this->db->join('tb_kategori_kelas', 'tb_kategori_kelas.id_kategori = tb_kelas.id_kategori');
+        $this->db->join('tb_siswa', 'tb_siswa.id_kelas = tb_kelas.id_kelas');
+        $this->db->where('tb_jadwal.id_petugas', $id_petugas);
+        $query = $this->db->get();
+        return $query;
+    }
 }

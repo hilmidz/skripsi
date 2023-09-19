@@ -366,7 +366,7 @@ class Kepalaunit extends CI_Controller
     {
         if ($this->input->post('save')) {
             $data = [
-                'hari_jadwal' => $this->input->post('hari_jadwal'),
+
                 'tema_pelajaran' => $this->input->post('tema_pelajaran'),
                 'jam_mulai' => $this->input->post('jam_mulai'),
                 'jam_selesai' => $this->input->post('jam_selesai'),
@@ -402,7 +402,7 @@ class Kepalaunit extends CI_Controller
     {
         $data = [
 
-            'hari_jadwal' => $this->input->post('hari_jadwal'),
+
             'tema_pelajaran' => $this->input->post('tema_pelajaran'),
             'jam_mulai' => $this->input->post('jam_mulai'),
             'jam_selesai' => $this->input->post('jam_selesai'),

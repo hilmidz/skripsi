@@ -36,7 +36,20 @@
                                     foreach ($jadwal as $jadwal) { ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $jadwal->hari_jadwal ?>, <?= $jadwal->tanggal ?></td>
+                                            <td>
+                                                <?php
+                                                $tanggal_awal = $jadwal->tanggal;
+                                                $nama_hari = array("Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu");
+
+                                                $tanggal_array = explode("-", $tanggal_awal);
+                                                $hari = date("w", strtotime($tanggal_awal));
+                                                $bulan = date("F", strtotime($tanggal_awal));
+                                                $tahun = $tanggal_array[0];
+                                                ?>
+
+                                                <?= $nama_hari[$hari] ?>, <?= $tanggal_array[2] ?> <?= $bulan ?> <?= $tahun ?>
+
+                                            </td>
                                             <td><?= $jadwal->tema_pelajaran ?></td>
                                             <td><?= $jadwal->jam_mulai ?></td>
                                             <td><?= $jadwal->jam_selesai ?></td>

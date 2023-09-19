@@ -11,21 +11,6 @@
                         <div class="card-body">
                             <h5 class="card-title">Add Jadwal</h5>
                             <form action="<?= site_url('kepalaunit/do_add_jadwal') ?>" method="post">
-
-                                <div class="row mb-3">
-                                    <label for="inputText" class="col-sm-2 col-form-label">Hari</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" name="hari_jadwal">
-                                            <option value="Senin">Senin</option>
-                                            <option value="Selasa">Selasa</option>
-                                            <option value="Rabu">Rabu</option>
-                                            <option value="Kamis">Kamis</option>
-                                            <option value="Jum'at">Jum'at</option>
-                                            <option value="Sabtu">Sabtu</option>
-                                        </select>
-                                    </div>
-                                </div>
-
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-2 col-form-label">Tanggal</label>
                                     <div class="col-sm-10">
