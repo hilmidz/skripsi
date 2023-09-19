@@ -10,6 +10,10 @@
 
       </ol>
     </nav>
+
+    <a href="<?= site_url('kepalaunit/add_siswa') ?>" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data Siswa</a>
+    </div>
+    </div>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -49,8 +53,8 @@
                       <td><?= $users->status_siswa ?></td>
                       <td><?= $users->nama_kelas ?> <?= $users->nama_kategori ?></td>
 
-                      <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $users->id_siswa) ?>">Edit
-                          <a href="<?= site_url('kepalaunit/deletesiswa/' . $users->id_siswa) ?>" onclick="return confirm('Are you sure?')">Delete</td>
+                      <td><a href="<?= site_url('kepalaunit/edit_siswa/' . $users->id_siswa) ?>"class="btn btn-sm btn-warning" style="background-color:#FFB000"><i class="bi bi-pencil-square" style="color:white"></i></a>
+                          <a href="<?= site_url('kepalaunit/deletesiswa/' . $users->id_siswa) ?>" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
 
                     </tr><?php } ?>
                 </tbody>
@@ -63,5 +67,4 @@
       </div>
 
     </section>
-    <a href="<?= site_url('kepalaunit/add_siswa') ?>">Tambah Data Pegawai</a>
     </table>
