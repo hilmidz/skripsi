@@ -5,11 +5,14 @@
         <h1>Data Jadwal</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= site_url('welcome') ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?= site_url('Kepalaunit') ?>">Home</a></li>
                 <li class="breadcrumb-item active">Jadwal</li>
-
             </ol>
         </nav>
+
+        <a href="<?= site_url('kepalaunit/add_jadwal') ?>" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Tambah Data Jadwal</a>
+        </div>
+        </div>
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
@@ -44,8 +47,8 @@
                                             <td><?= $jadwal->nama_kelas ?> <?= $jadwal->nama_kategori ?></td>
 
                                             <td><a class="btn btn-primary btn-sm" href="<?= site_url('kepalaunit/detail_jadwal/' . $jadwal->id_jadwal) ?>">Detail </a>
-                                                <a class="btn btn-warning btn-sm" href="<?= site_url('kepalaunit/edit_jadwal/' . $jadwal->id_jadwal) ?>">Edit </a>
-                                                <a class="btn btn-danger btn-sm" href="<?= site_url('kepalaunit/deletejadwal/' . $jadwal->id_jadwal) ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                                                <a class="btn btn-warning btn-sm" href="<?= site_url('kepalaunit/edit_jadwal/' . $jadwal->id_jadwal) ?>" class="btn btn-sm btn-warning" style="background-color:#FFB000"><i class="bi bi-pencil-square" style="color:white"></i></a>
+                                                <a class="btn btn-danger btn-sm" href="<?= site_url('kepalaunit/deletejadwal/' . $jadwal->id_jadwal) ?>" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></a>
                                             </td>
 
                                         </tr><?php } ?>
@@ -59,5 +62,4 @@
             </div>
 
         </section>
-        <a href="<?= site_url('kepalaunit/add_jadwal') ?>">Tambah Jadwal</a>
         </table>
