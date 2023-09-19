@@ -140,4 +140,28 @@ class Siswa extends CI_Controller
       </div>');
         redirect('siswa/profile');
     }
+
+    function do_add_nilai($id_siswa)
+    {
+        if ($this->input->post('save')) {
+            $data = [
+                'level_satu' => $this->input->post('level_satu'),
+                'level_dua' => $this->input->post('level_dua'),
+                'level_tiga' => $this->input->post('level_tiga'),
+                'level_empat' => $this->input->post('level_empat'),
+                'kognitif' => $this->input->post('kognitif'),
+                'komunikasi' => $this->input->post('komunikasi'),
+                'perilaku' => $this->input->post('perilaku'),
+                'emosional' => $this->input->post('emosional'),
+                'sosial' => $this->input->post('sosial'),
+                'id_siswa' => $this->input->post('id_siswa'),
+            ];
+            $this->Kepalaunit_model->insertGuru($data);
+            $this->session->set_flashdata('success', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Data Berhasil Ditambah !</strong> You should check in on some of those fields below.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>');
+            redirect('kepalaunit/list_guru');
+        }
+    }
 }
